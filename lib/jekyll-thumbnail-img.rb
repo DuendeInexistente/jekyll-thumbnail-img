@@ -33,7 +33,7 @@ module Jekyll
         FileUtils.mkdir_p(File.dirname(thumb[:dest]))
         if !File.exist?(thumb[:dest]) || File.mtime(thumb[:dest]) <= File.mtime(thumb[:source])
           Jekyll.logger.info "JekyllThumbnailImg:", "Generating: #{thumb[:dest].sub(site.dest + '/', '')}"
-          MiniMagick::Image.open(thumb[:source]).resize("#{thumb[:width]}x").write(thumb[:dest])
+          MiniMagick::Image.open(thumb[:source]).resize("x#{thumb[:width]}").write(thumb[:dest])
         end
       end
       @@pending.clear
